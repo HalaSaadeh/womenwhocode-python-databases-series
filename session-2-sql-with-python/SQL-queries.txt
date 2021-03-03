@@ -1,0 +1,27 @@
+CREATE DATA:
+* USING BANK SAMPLE* 
+
+CREATE TABLE IF NOT EXISTS CREDITCARD(cardID CHAR(4) NOT NULL, accountID INT NOT NULL, PRIMARY KEY(cardID), FOREIGN KEY accountID REFERENCES BANKACCOUNT(accountID))
+CREATE TABLE IF NOT EXISTS BANKACCOUNT(accountID NOT NULL, clientID INT NOT NULL, PRIMARY KEY(accountID), FOREIGN KEY clientID REFERENCES Client(clientID) )
+
+INSERT INTO CREDITCARD (cardID, accountID) VALUES (BZGH, 552)
+
+--------------------
+READ DATA
+* USING CHINOOK SAMPLE* 
+SELECT * FROM albums, artists WHERE artists.name = "AC/DC" AND albums.ArtistId=artists.ArtistId
+
+* USING BANK SAMPLE* 
+SELECT * FROM client WHERE firstname="Jane"
+SELECT employeeID FROM employee WHERE firstname = "Karen"
+
+--------------------
+UPDATE DATA
+* USING CHINOOK SAMPLE* 
+
+UPDATE playlists set Name="Music Play" WHERE Name = "Music"
+UPDATE invoices set BillingCountry="United States" WHERE country="USA"
+--------------------
+DELETE DATA
+* USING CHINOOK SAMPLE* 
+DELETE FROM invoices WHERE BillingCountry="France"
